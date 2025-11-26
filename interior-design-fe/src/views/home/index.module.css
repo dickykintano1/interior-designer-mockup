@@ -1,0 +1,4 @@
+.officeImage{
+  position: sticky;
+  top: -100px; /* distance from top while scrolling */
+}

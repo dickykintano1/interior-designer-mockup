@@ -1,4 +1,5 @@
 import BasicPage from "../../components/BasicPage";
+import styles from './index.module.css'
 
 function HomeView(){
   return(
@@ -21,21 +22,9 @@ function HomeView(){
 
       <BasicPage>
         <div className="flex w-full h-[80px] text-3xl items-center justify-center bg-[#FFD296]">About us</div>
-        <div 
-          className="
-            w-[80%] 
-            h-[40vh]
-            m-auto
-            mt-10
-
-            bg-[url(/img/office.png)] 
-            bg-[120%_auto]
-            bg-center
-          "
-        >
-        </div>
+        <img src="/img/office.png" className={`${styles.officeImage} w-[80%] h-[40vh] m-auto mt-10`}/>
         <div className="flex w-full h-[80px] text-2xl items-center justify-center">
-          WEBSITE EXPLAINATION
+          Ambiex is a made up company focuses on both work and living space, boosting life experience.
         </div>
       </BasicPage>
 
