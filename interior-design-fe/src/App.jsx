@@ -14,7 +14,7 @@ import Project2Page from './pages/projects/project2';
 function RoutesWithNavBar(){
   return(
     <>
-      <NavBar color='#D6D6D6'/>
+      <NavBar color='#D8C8A5'/>
       <Outlet/>
     </>
   )
@@ -23,7 +23,7 @@ function RoutesWithNavBar(){
 function RoutesWithSideBar(){
   return(
     <>
-      <SideBar color='#D6D6D6'/>
+      <SideBar color='#D8C8A5'/>
       <Outlet/>
     </>
   )

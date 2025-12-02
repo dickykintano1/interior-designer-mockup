@@ -1,4 +1,3 @@
-.officeImage{
-  position: sticky;
-  top: -100px; /* distance from top while scrolling */
+.quote{
+  animation: fadeIn 1s ease forwards;
 }
