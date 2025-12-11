@@ -5,6 +5,7 @@ import { LenisProvider } from './contexts/LenisProvider';
 import PageWrapper from './components/PageWrapper';
 import NavBar from './components/NavBar';
 import SideBar from './components/SideBar'
+import Footer from './components/Footer';
 
 import HomePage from './pages/home';
 import AboutPage from './pages/about';
@@ -16,6 +17,7 @@ function RoutesWithNavBar(){
     <>
       <NavBar color='#D8C8A5'/>
       <Outlet/>
+      <Footer/>
     </>
   )
 }
@@ -25,6 +27,7 @@ function RoutesWithSideBar(){
     <>
       <SideBar color='#D8C8A5'/>
       <Outlet/>
+      <Footer/>
     </>
   )
 }

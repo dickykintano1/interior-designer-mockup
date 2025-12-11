@@ -1,11 +1,81 @@
+import React, { useState, useEffect, useRef } from 'react';
+
 import BasicPage from "../../components/BasicPage";
-import styles from './index.module.css'
+
 
 function HomeView() {
+  // 1. State to track when the element has been crossed
+  const [hasCrossedElement, setHasCrossedElement] = useState(false);
+
+  // 2. Ref to attach to the element you want to watch (the Image/Header)
+  const targetRef = useRef(null);
+
+  useEffect(() => {
+    // Ensure the target element is available
+    if (!targetRef.current) return;
+
+    // Define the options for the observer
+    const options = {
+      // The viewport is the root
+      root: null, 
+      // The threshold determines when the observer's callback is executed.
+      // 0.0 means as soon as 1 pixel of the target element is visible.
+      // 1.0 means the callback fires when 100% of the target element is visible.
+      // We often use a threshold near 0 or 1 for simple checks.
+      threshold: 0.0,
+      // rootMargin allows you to shrink or grow the root's bounding box.
+      // We use "-1px 0px 0px 0px" to trigger *just* when the bottom of the element 
+      // is scrolled 1 pixel above the top of the viewport.
+      rootMargin: "0px 0px 0px 0px" 
+    };
+
+    // The callback function that runs when the target intersects the root
+    const callback = (entries) => {
+      // 'entries' is an array of observed elements. We only have one (targetRef.current).
+      entries.forEach(entry => {
+        // entry.isIntersecting is true when the element is visible in the root
+        // If entry.isIntersecting is FALSE, it means the element has scrolled completely out of view (past the top).
+        if (!entry.isIntersecting) {
+          // The element is completely off the screen
+          setHasCrossedElement(true);
+          console.log("🚀 Element crossed the top boundary! Fixed state activated.");
+        } else {
+          // The element is back on the screen
+          setHasCrossedElement(false);
+          console.log("🔽 Element is visible again. Fixed state deactivated.");
+        }
+      });
+    };
+
+    // Create the Intersection Observer instance
+    const observer = new IntersectionObserver(callback, options);
+
+    // Start observing the target element
+    observer.observe(targetRef.current);
+
+    // Cleanup function: stop observing when the component unmounts
+    return () => {
+      if (targetRef.current) {
+        observer.unobserve(targetRef.current);
+      }
+    };
+  }, []);
+
+
   return (
+    <>
+    <div 
+      className={`
+        fixed bottom-0 text-6xl text-[#C6A982] z-1
+        transition-all duration-2000
+        ${hasCrossedElement?"":"text-transparent"}
+      `}
+    >
+      Ambiex
+    </div>
     <div className="bg-[#FCECD2]">
       <BasicPage className="flex flex-col">
-        <div className="
+        <div ref={targetRef} className="
           bg-[url(/img/livingRoom.png)] bg-no-repeat bg-center
           w-full 
           h-[50svh]
@@ -20,13 +90,21 @@ function HomeView() {
           md:bg-bottom
         ">
         </div>
-        <div className={`
-          flex flex-col justify-top items-left
-          bg-[#FCECD2]
-          w-full h-[50svh]
-        `}>
-          <span className="px-5 pt-5 text-left text-6xl">Ambiex</span>
-          <hr className="w-[80vw] h-10 px-5"></hr>
+        <div
+          className={`
+            flex flex-col justify-top items-left
+            bg-[#FCECD2]
+            w-full h-[50svh]
+          `}
+        >
+          <div 
+            className={`
+              px-5 py-5 text-left text-6xl text-[#C6A982]
+            `}
+          >
+            Ambiex
+          </div>
+          <hr className="w-[80vw] h-10"></hr>
           <div className="px-5 pr-10">
             <span className="text-left text-xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut porro, rerum repudiandae reiciendis quam harum. Ducimus, fugiat distinctio nam omnis quod itaque perspiciatis, mollitia at culpa, aliquam earum accusantium minima.</span>
           </div>
@@ -110,7 +188,7 @@ function HomeView() {
         </div>
       </BasicPage>
 
-      <BasicPage className="flex justify-center items-center my-20">
+      <BasicPage className="flex justify-center items-center py-20">
         <div className="flex flex-col w-70 h-100 bg-[#D8C8A5] justify-top items-center">
           <span className="h-15 w-full text-left text-3xl p-3">Contact</span>
           <div className="flex justify-center items-center w-full p-3"><img src='img/typing.png' className="max-w-40 h-50 object-cover"></img></div>
@@ -125,25 +203,8 @@ function HomeView() {
           </div>
         </div>
       </BasicPage>
-
-      <div id="footer"
-        className="relative w-[100vw] h-[80svh] !text-[#E8E4DA]"
-      >
-        <div className="flex flex-col w-full h-full text-3xl items-center justify-center bg-[#C6A982]">
-          <div className="relative flex-1 w-full">
-            <hr className="absolute bottom-0 col-span-3 h-[2px] w-[100vw] border-none" style={{ backgroundColor: '#D8C8A5' }}></hr>
-          </div>
-          <div className="relative flex-2 w-full">
-            <hr className="absolute bottom-0 col-span-3 h-[2px] w-[100vw] border-none" style={{ backgroundColor: '#D8C8A5' }}></hr>
-          </div>
-          <div className="relative flex-1 w-full">
-            <hr className="absolute bottom-0 col-span-3 h-[2px] w-[100vw] border-none" style={{ backgroundColor: '#D8C8A5' }}></hr>
-          </div>
-          <div className="flex-2 w-full">
-          </div>
-        </div>
-      </div>
     </div>
+    </>
   )
 }
 
