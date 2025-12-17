@@ -16,16 +16,8 @@ function HomeView() {
 
     // Define the options for the observer
     const options = {
-      // The viewport is the root
       root: null, 
-      // The threshold determines when the observer's callback is executed.
-      // 0.0 means as soon as 1 pixel of the target element is visible.
-      // 1.0 means the callback fires when 100% of the target element is visible.
-      // We often use a threshold near 0 or 1 for simple checks.
       threshold: 0.0,
-      // rootMargin allows you to shrink or grow the root's bounding box.
-      // We use "-1px 0px 0px 0px" to trigger *just* when the bottom of the element 
-      // is scrolled 1 pixel above the top of the viewport.
       rootMargin: "0px 0px 0px 0px" 
     };
 
@@ -99,13 +91,13 @@ function HomeView() {
         >
           <div 
             className={`
-              px-5 py-5 text-left text-6xl text-[#C6A982]
+              px-5 py-5 text-left text-6xl text-[#C6A982] font-playfairDisplay
             `}
           >
             Ambiex
           </div>
           <hr className="w-[80vw] h-10"></hr>
-          <div className="px-5 pr-10">
+          <div className="px-5">
             <span className="text-left text-xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut porro, rerum repudiandae reiciendis quam harum. Ducimus, fugiat distinctio nam omnis quod itaque perspiciatis, mollitia at culpa, aliquam earum accusantium minima.</span>
           </div>
         </div>
@@ -144,12 +136,15 @@ function HomeView() {
             <span className="flex-1 text-sm text-right">Process<br></br>Materials</span>
           </div>
         </div>
+        <div className=''>
+          
+        </div>
       </BasicPage>
 
       <BasicPage className="bg-[#D8C8A5]">
         <div className="flex flex-row h-[80px] items-center justify-center">
           <hr className="flex-1 border-0 h-1 w-full bg-[#C6A982]"></hr>
-          <span className="flex-2 text-3xl text-center">About</span>
+          <span className="flex-2 text-3xl text-center font-playfairDisplay">About</span>
           <hr className="flex-1 border-0 h-1 w-full bg-[#C6A982]"></hr>
         </div>
         <div className="w-[100vw] px-10 flex">
@@ -163,7 +158,7 @@ function HomeView() {
       <BasicPage>
         <div className="flex flex-row h-[80px] items-center justify-center">
           <hr className="flex-1 border-0 h-1 w-full bg-[#D8C8A5]"></hr>
-          <span className="flex-2 text-3xl text-center">Services</span>
+          <span className="flex-2 text-3xl text-center font-playfairDisplay">Services</span>
           <hr className="flex-1 border-0 h-1 w-full bg-[#D8C8A5]"></hr>
         </div>
         <div className="grid grid-cols-3 grid-rows-20 h-[100svh] mx-5">
@@ -190,7 +185,7 @@ function HomeView() {
 
       <BasicPage className="flex justify-center items-center py-20">
         <div className="flex flex-col w-70 h-100 bg-[#D8C8A5] justify-top items-center">
-          <span className="h-15 w-full text-left text-3xl p-3">Contact</span>
+          <span className="h-15 w-full text-left text-3xl p-3 font-playfairDisplay">Contact</span>
           <div className="flex justify-center items-center w-full p-3"><img src='img/typing.png' className="max-w-40 h-50 object-cover"></img></div>
           <div className="flex justify-center items-center flex-1">
             <span className="h-15 w-full text-left text-sm p-3 flex items-center">We'd like to hear from you!</span>

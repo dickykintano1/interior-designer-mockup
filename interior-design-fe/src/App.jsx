@@ -9,6 +9,8 @@ import Footer from './components/Footer';
 
 import HomePage from './pages/home';
 import AboutPage from './pages/about';
+import ContactPage from './pages/contact';
+
 import Project1Page from './pages/projects/project1';
 import Project2Page from './pages/projects/project2';
 
@@ -43,6 +45,7 @@ function App() {
           <Route element={<RoutesWithNavBar/>}>
             <Route path="/"           element={<PageWrapper> <HomePage />    </PageWrapper>}/>
             <Route path="/about"      element={<PageWrapper> <AboutPage />    </PageWrapper>}/>
+            <Route path="/contact"    element={<PageWrapper> <ContactPage />    </PageWrapper>}/>
           </Route>
 
           <Route element={<RoutesWithSideBar/>}>
