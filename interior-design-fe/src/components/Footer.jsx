@@ -11,8 +11,8 @@ export default function Footer(){
           <div className="grid grid-cols-2 gap-8 w-[90vw] mx-auto">
             <div>
               <ul className="space-y-1 text-lg font-light font-montserrat">
-                <li><a href="#" className="hover:underline">About Us</a></li>
-                <li><a href="#" className="hover:underline">Our Philosophy</a></li>
+                <li><a href="/about" className="hover:underline">About Us</a></li>
+                <li><a href="/philosophy" className="hover:underline">Our Philosophy</a></li>
                 <li><a href="#" className="hover:underline">The Team</a></li>
                 <li><a href="#" className="hover:underline">Portfolio</a></li>
               </ul>

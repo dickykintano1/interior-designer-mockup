@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import HomePage from './pages/home';
 import AboutPage from './pages/about';
 import ContactPage from './pages/contact';
+import PhilosophyPage from './pages/philosophy';
 
 import Project1Page from './pages/projects/project1';
 import Project2Page from './pages/projects/project2';
@@ -43,9 +44,10 @@ function App() {
         <Routes location={location} key={location.pathname}>
 
           <Route element={<RoutesWithNavBar/>}>
-            <Route path="/"           element={<PageWrapper> <HomePage />    </PageWrapper>}/>
-            <Route path="/about"      element={<PageWrapper> <AboutPage />    </PageWrapper>}/>
-            <Route path="/contact"    element={<PageWrapper> <ContactPage />    </PageWrapper>}/>
+            <Route path="/"           element={<HomePage />}/>
+            <Route path="/about"      element={<AboutPage />}/>
+            <Route path="/contact"    element={<ContactPage />}/>
+            <Route path="/philosophy" element={<PhilosophyPage />}/>
           </Route>
 
           <Route element={<RoutesWithSideBar/>}>

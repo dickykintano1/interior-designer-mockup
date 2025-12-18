@@ -22,10 +22,10 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="font-sans !text-black">
+    <div className="!text-black">
       <div className='bg-[#F9EED2] flex flex-col min-h-[100dvh]'>
         <div className="px-6 py-12">
-          <span className="text-3xl -mx-6 px-6 my-30 border-b border-black inline-block pr-8">Contact</span>
+          <span className="text-4xl -mx-6 pl-6 my-30 border-b border-black inline-block">Contact</span>
     
           <div className="space-y-6 mb-15">
             <p>Thank you for considering us.<br />First meeting is also available online.</p>
@@ -33,7 +33,7 @@ const ContactForm = () => {
           </div>
 
           <div className="space-y-4 mb-20">
-            <h2 className="text-2xl">Telephone</h2>
+            <h2 className="text-2xl font-playfairDisplay">Telephone</h2>
             <p>For inquiries feel free to fill the form, or you can contact us by:</p>
             <p className="text-3xl md:text-4xl font-light">(555) 123-4567</p>
             <p>Reception hours: Weekdays 9:00 - 17:30</p>
