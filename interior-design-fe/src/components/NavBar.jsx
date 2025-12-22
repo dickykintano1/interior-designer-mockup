@@ -5,6 +5,7 @@ import { useLenisContext } from "../contexts/LenisProvider";
 const NavBar = ({ color }) => {
   const [open, setOpen] = useState(false);
   const navRef = useRef(null);
+  const contactRef = useRef(null);
 
   useEffect(() => {
     let lastScroll = 0;
@@ -15,9 +16,13 @@ const NavBar = ({ color }) => {
       if (curr > lastScroll && curr > 50) {
         navRef.current.style.backgroundColor = '';
         console.log('nav hidden')
+
+        contactRef.current.style.transform = 'translateY(-100%)'
       } else {
         navRef.current.style.backgroundColor = color;
         console.log('nav show')
+
+        contactRef.current.style.transform = 'translateY(0%)'
       }
 
       lastScroll = curr;
@@ -33,21 +38,22 @@ const NavBar = ({ color }) => {
 
   return (
     <>
-      <div ref={navRef} className="fixed w-full h-20 z-50 top-0 px-5 flex flex-wrap items-center justify-center transition-all duration-300" style={{ backgroundColor: color }}>
-        <button
-          onClick={() => setOpen((o) => !o)}
-          className="!bg-transparent !p-0"
-        >
-          <img src="/img/menu.png" className="w-8 h-8" alt="menu" />
-        </button>
-        <div className="block flex-8"></div>
-        <Link to="/contact" className="flex-1 text-center !text-black font-crimsonPro md:text-2xl">Contact</Link>
+      <div ref={navRef} className="fixed w-full h-20 z-50 top-0 px-5 flex items-center justify-end transition-all duration-300 overflow-none" style={{ backgroundColor: color }}>
+        <div className="overflow-hidden">
+          <a  ref={contactRef} href="/contact" className={`block text-center !text-black font-crimsonPro md:text-2xl transition-all`}>Contact</a>
+        </div>
       </div>
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className={`!bg-transparent !p-0 fixed z-99 ml-6 mt-6`}
+      >
+        <img src="/img/menu.png" className="w-8 h-8" alt="menu" />
+      </button>
       <div>
         {/* Overlay */}
         <div
           className={`
-            fixed inset-0 bg-black/50 transition-opacity duration-300 z-99
+            fixed inset-0 bg-black/50 transition-opacity duration-300 z-98
             ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
           `}
           onClick={() => setOpen(false)}
@@ -56,18 +62,22 @@ const NavBar = ({ color }) => {
         {/* Sidebar */}
         <div
           className={`
-            fixed left-0 top-0 h-screen w-[40vw] bg-[#795548] shadow-xl z-99
-            transform transition-transform duration-300
+            fixed left-0 top-0 h-screen w-[50vw] bg-[#795548] shadow-xl z-98
+            transform transition-transform duration-300 flex flex-col
             ${open ? "translate-x-0" : "-translate-x-full"}
           `}
         >
-          <div className="p-4 ">
-            <h2 className="text-xl font-bold">Sidebar Panel</h2>
-            <p className="mt-4">Reserve</p>
-            
-            <p className="mt-4">Location</p>
+          <p className="py-5 pl-21 text-3xl font-bold font-playfairDisplay">Ambiex</p>
+          <div className="px-6 flex flex-col">
+            <a href="/"         className="mt-4 text-xl hover:underline">Home</a>
+            <a href="/about"    className="mt-4 text-xl hover:underline">About</a>
+            <a href="/works"    className="mt-4 text-xl hover:underline">Our Work</a>
+            <a href="/team"     className="mt-4 text-xl hover:underline">Our Team</a>
+            <a href="/contact"  className="mt-4 text-xl hover:underline">Contact</a>
+          </div>
 
-            <p className="mt-4">Contact</p>
+          <div className="mx-6 pb-6 h-full flex items-end">
+            <div className="flex">Logo Logo Privacy</div>
           </div>
         </div>
       </div>

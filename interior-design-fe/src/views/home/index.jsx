@@ -104,40 +104,36 @@ function HomeView() {
       </BasicPage>
 
       <BasicPage className="projects-container flex flex-col px-5">
-        <div className="project-1 grid justify-center items-center pb-5">
+        <div className="project-1 grid justify-center items-center mb-18">
           <img src="/img/office.png" className="w-[100vw] h-60 object-cover"/>
-          <div className="flex flex-row w-full h-25">
-            <span className="flex-2 text-sm">Project Red</span>
-            <span className="flex-1 text-sm text-left">Area<br></br>300m²<br></br>Completion<br></br>2025</span>
-            <span className="flex-1 text-sm text-right">Process<br></br>Materials</span>
+          <div className="flex flex-row w-full">
+            <span className="flex-1 text-sm">Project Red<br/>2025</span>
+            <span className="flex-1 text-sm text-left">Process<br/>Materials</span>
           </div>
         </div>
-        <div className="project-1 grid justify-center items-center pb-5">
+        <div className="project-1 grid justify-center items-center mb-18">
           <img src="/img/office2.png" className="w-[100vw] h-60 object-cover"/>
-          <div className="flex flex-row w-full h-25">
-            <span className="flex-2 text-sm">Project Blue</span>
-            <span className="flex-1 text-sm text-left">Area<br></br>250m²<br></br>Completion<br></br>2025</span>
-            <span className="flex-1 text-sm text-right">Process<br></br>Materials</span>
+          <div className="flex flex-row w-full">
+            <span className="flex-1 text-sm">Project Blue<br/>2025</span>
+            <span className="flex-1 text-sm text-left">Process<br/>Materials</span>
           </div>
         </div>
-        <div className="project-1 grid justify-center items-center pb-5">
+        <div className="project-1 grid justify-center items-center mb-18">
           <img src="/img/livingRoom2.png" className="w-[100vw] h-60 object-cover"/>
-          <div className="flex flex-row w-full h-25">
-            <span className="flex-2 text-sm">Project Green</span>
-            <span className="flex-1 text-sm text-left">Area<br></br>400m²<br></br>Completion<br></br>2025</span>
-            <span className="flex-1 text-sm text-right">Process<br></br>Materials</span>
+          <div className="flex flex-row w-full">
+            <span className="flex-1 text-sm">Project Green<br/>2025</span>
+            <span className="flex-1 text-sm text-left">Process<br/>Materials</span>
           </div>
         </div>
-        <div className="project-1 grid justify-center items-center pb-5">
+        <div className="project-1 grid justify-center items-center mb-18">
           <img src="/img/livingRoom.png" className="w-[100vw] h-60 object-cover"/>
-          <div className="flex flex-row w-full h-25">
-            <span className="flex-2 text-sm">Project White</span>
-            <span className="flex-1 text-sm text-left">Area<br></br>650m²<br></br>Completion<br></br>2025</span>
-            <span className="flex-1 text-sm text-right">Process<br></br>Materials</span>
+          <div className="flex flex-row w-full">
+            <span className="flex-1 text-sm">Project White<br/>2025</span>
+            <span className="flex-1 text-sm text-left">Process<br/>Materials</span>
           </div>
         </div>
-        <div className=''>
-          
+        <div className='flex justify-center items-center mt-7 mb-25'>
+          <a href='/works'className='font-playfairDisplay text-3xl underline'>See all works</a>
         </div>
       </BasicPage>
 

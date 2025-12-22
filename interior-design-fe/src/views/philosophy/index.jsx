@@ -4,7 +4,7 @@ export default function PhilosophyView(){
   return(
     <>
       <div className='bg-[#F9EED2] !text-black px-6 py-12'>
-        <span className="text-5xl -mx-6 pl-6 my-30 border-b border-black inline-block">Philosophy</span>
+        <span className="text-4xl -mx-6 pl-6 my-30 border-b border-black inline-block">Philosophy</span>
 
         <div className="space-y-3 mb-15 text-3xl font-playfairDisplay">
           <p>Space creates routine</p>

@@ -11,24 +11,14 @@ import HomePage from './pages/home';
 import AboutPage from './pages/about';
 import ContactPage from './pages/contact';
 import PhilosophyPage from './pages/philosophy';
+import WorksPage from './pages/works';
 
-import Project1Page from './pages/projects/project1';
-import Project2Page from './pages/projects/project2';
+import ProjectPage from './pages/project';
 
-function RoutesWithNavBar(){
+function MainLayout(){
   return(
     <>
       <NavBar color='#D8C8A5'/>
-      <Outlet/>
-      <Footer/>
-    </>
-  )
-}
-
-function RoutesWithSideBar(){
-  return(
-    <>
-      <SideBar color='#D8C8A5'/>
       <Outlet/>
       <Footer/>
     </>
@@ -42,19 +32,14 @@ function App() {
     <LenisProvider>
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-
-          <Route element={<RoutesWithNavBar/>}>
+          <Route element={<MainLayout/>}>
             <Route path="/"           element={<HomePage />}/>
             <Route path="/about"      element={<AboutPage />}/>
             <Route path="/contact"    element={<ContactPage />}/>
             <Route path="/philosophy" element={<PhilosophyPage />}/>
+            <Route path="/works"      element={<WorksPage />}/>
+            <Route path="/works/:id"  element={<ProjectPage />} />
           </Route>
-
-          <Route element={<RoutesWithSideBar/>}>
-            <Route path="/project/1"  element={<PageWrapper> <Project1Page />    </PageWrapper>}/>
-            <Route path="/project/2"  element={<PageWrapper> <Project2Page />    </PageWrapper>}/>
-          </Route>
-          
         </Routes>
       </AnimatePresence>
     </LenisProvider>

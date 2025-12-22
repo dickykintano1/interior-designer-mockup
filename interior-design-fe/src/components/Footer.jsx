@@ -12,14 +12,14 @@ export default function Footer(){
             <div>
               <ul className="space-y-1 text-lg font-light font-montserrat">
                 <li><a href="/about" className="hover:underline">About Us</a></li>
-                <li><a href="/philosophy" className="hover:underline">Our Philosophy</a></li>
+                <li><a href="/philosophy" className="hover:underline">Our Work</a></li>
                 <li><a href="#" className="hover:underline">The Team</a></li>
                 <li><a href="#" className="hover:underline">Portfolio</a></li>
               </ul>
             </div>
             <div>
               <ul className="space-y-1 text-lg font-light text-right font-montserrat">
-                <li><a href="#" className="hover:underline">Contact</a></li>
+                <li><a href="/contact" className="hover:underline">Contact</a></li>
               </ul>
             </div>
           </div>
