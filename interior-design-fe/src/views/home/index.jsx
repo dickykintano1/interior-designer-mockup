@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 import BasicPage from "../../components/BasicPage";
 
@@ -133,7 +134,7 @@ function HomeView() {
           </div>
         </div>
         <div className='flex justify-center items-center mt-7 mb-25'>
-          <a href='/works'className='font-playfairDisplay text-3xl underline'>See all works</a>
+          <Link to='/works'className='font-playfairDisplay text-3xl underline'>See all works</Link>
         </div>
       </BasicPage>
 

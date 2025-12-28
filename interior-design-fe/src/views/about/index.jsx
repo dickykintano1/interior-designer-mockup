@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function AboutView() {
   return(
     <>
@@ -39,12 +41,12 @@ export default function AboutView() {
           <img src="/img/office4.png" className="w-full h-[50dvw] object-cover object-[0%_80%]"/>
           <div className="absolute inset-0 bg-black/40 mix-blend-multiply flex items-center justify-center"/>
           <div className="absolute inset-0 flex items-center justify-center">
-            <a href="/" 
+            <Link to="/works" 
             className="text-white whitespace-nowrap text-5xl underline 
               transition-all duration-500 hover:text-[#F9EED2]"
             >
               See all work
-            </a>
+            </Link>
           </div>
         </div>
       </div>

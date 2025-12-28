@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -101,7 +102,7 @@ const ContactForm = () => {
               className="w-5 h-5 border-gray-300 rounded"
             />
             <span className="text-[15px]">
-              I agree to the <a href="#" className="underline">Privacy Policy</a>.
+              I agree to the <Link href="/" className="underline">Privacy Policy</Link>.
             </span>
           </label>
 

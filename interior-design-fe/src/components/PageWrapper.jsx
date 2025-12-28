@@ -6,12 +6,12 @@ function PageWrapper({children }){
   return(
     <>
       <motion.div
+      key="transition"
         initial=    {{opacity:1, x:0}}
         animate=    {{opacity:0, x:0}}
         exit=       {{opacity:1, x:0}}
         transition= {{duration:.4}}
-        style={{ height: `${height}px`, top:0 }}
-        className={`absolute w-full bg-black z-49`}
+        className="fixed inset-0 w-screen h-screen bg-black z-50 pointer-events-none"
       >
       </motion.div>
       {children}

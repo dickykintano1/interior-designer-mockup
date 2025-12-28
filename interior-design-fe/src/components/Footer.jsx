@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 export default function Footer(){
   return(
     <div id="footer"
@@ -11,15 +13,15 @@ export default function Footer(){
           <div className="grid grid-cols-2 gap-8 w-[90vw] mx-auto">
             <div>
               <ul className="space-y-1 text-lg font-light font-montserrat">
-                <li><a href="/about" className="hover:underline">About Us</a></li>
-                <li><a href="/philosophy" className="hover:underline">Our Work</a></li>
-                <li><a href="#" className="hover:underline">The Team</a></li>
-                <li><a href="#" className="hover:underline">Portfolio</a></li>
+                <li><Link to="/" className="hover:underline">Home</Link></li>
+                <li><Link to="/about" className="hover:underline">About Us</Link></li>
+                <li><Link to="/works" className="hover:underline">Our Work</Link></li>
+                <li><Link to="/philosophy" className="hover:underline">Philosophy</Link></li>
               </ul>
             </div>
             <div>
               <ul className="space-y-1 text-lg font-light text-right font-montserrat">
-                <li><a href="/contact" className="hover:underline">Contact</a></li>
+                <li><Link to="/contact" className="hover:underline">Contact</Link></li>
               </ul>
             </div>
           </div>
@@ -49,8 +51,8 @@ export default function Footer(){
           <div className="grid grid-cols-2 gap-2 w-[90vw] mx-auto text-sm text-gray-600 font-montserrat">
             <p>&copy; {new Date().getFullYear()} Your Studio Name. All Rights Reserved.</p>
             <div className="flex flex-col text-right">
-              <a href="#" className="hover:underline">Privacy Policy</a>
-              <a href="#" className="hover:underline">Terms of Service</a>
+              <Link to="/privacy-policy" className="hover:underline">Privacy Policy</Link>
+              <Link to="/terms-of-service" className="hover:underline">Terms of Service</Link>
             </div>
           </div>
         </div>

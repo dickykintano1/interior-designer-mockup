@@ -1,11 +1,17 @@
 import { useEffect, useState, useRef } from "react";
 import { useLocation, Link } from 'react-router-dom';
 import { useLenisContext } from "../contexts/LenisProvider";
+import { motion, AnimatePresence } from "framer-motion";
 
 const NavBar = ({ color }) => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
   const navRef = useRef(null);
   const contactRef = useRef(null);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     let lastScroll = 0;
@@ -35,12 +41,11 @@ const NavBar = ({ color }) => {
     };
   }, []);
 
-
   return (
     <>
       <div ref={navRef} className="fixed w-full h-20 z-50 top-0 px-5 flex items-center justify-end transition-all duration-300 overflow-none" style={{ backgroundColor: color }}>
         <div className="overflow-hidden">
-          <a  ref={contactRef} href="/contact" className={`block text-center !text-black font-crimsonPro md:text-2xl transition-all`}>Contact</a>
+          <Link ref={contactRef} to="/contact" className={`block text-center !text-black font-crimsonPro md:text-2xl transition-all`}>Contact</Link>
         </div>
       </div>
       <button
@@ -49,38 +54,46 @@ const NavBar = ({ color }) => {
       >
         <img src="/img/menu.png" className="w-8 h-8" alt="menu" />
       </button>
-      <div>
-        {/* Overlay */}
-        <div
-          className={`
-            fixed inset-0 bg-black/50 transition-opacity duration-300 z-98
-            ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
-          `}
-          onClick={() => setOpen(false)}
-        />
+      <AnimatePresence>
+      {open &&(
+        <>
+          {/* Overlay */}
+          <motion.div
+            key="overlay"
+            initial={{opacity:0}}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpen(false)}
+            className={`
+              fixed inset-0 bg-black/50 z-98
+            `}
+          />
 
-        {/* Sidebar */}
-        <div
-          className={`
-            fixed left-0 top-0 h-screen w-[50vw] bg-[#795548] shadow-xl z-98
-            transform transition-transform duration-300 flex flex-col
-            ${open ? "translate-x-0" : "-translate-x-full"}
-          `}
-        >
-          <p className="py-5 pl-21 text-3xl font-bold font-playfairDisplay">Ambiex</p>
-          <div className="px-6 flex flex-col">
-            <a href="/"         className="mt-4 text-xl hover:underline">Home</a>
-            <a href="/about"    className="mt-4 text-xl hover:underline">About</a>
-            <a href="/works"    className="mt-4 text-xl hover:underline">Our Work</a>
-            <a href="/team"     className="mt-4 text-xl hover:underline">Our Team</a>
-            <a href="/contact"  className="mt-4 text-xl hover:underline">Contact</a>
-          </div>
+          {/* Sidebar */}
+          <motion.div
+            key="sidebar-menu"
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed left-0 top-0 h-screen w-[50vw] md:w-[40vw] bg-[#795548] shadow-xl z-[98] flex flex-col"
+          >
+            <p className="py-5 pl-21 text-3xl font-bold font-playfairDisplay">Ambiex</p>
+            <div className="px-6 flex flex-col">
+              <Link to="/"            className="mt-4 text-xl hover:underline">Home</Link>
+              <Link to="/about"       className="mt-4 text-xl hover:underline">About</Link>
+              <Link to="/works"       className="mt-4 text-xl hover:underline">Our Work</Link>
+              <Link to="/philosophy"  className="mt-4 text-xl hover:underline">Philosophy</Link>
+              <Link to="/contact"     className="mt-4 text-xl hover:underline">Contact</Link>
+            </div>
 
-          <div className="mx-6 pb-6 h-full flex items-end">
-            <div className="flex">Logo Logo Privacy</div>
-          </div>
-        </div>
-      </div>
+            <div className="mx-6 pb-6 h-full flex items-end">
+              <div className="flex">Logo Logo Privacy</div>
+            </div>
+          </motion.div>
+        </>
+      )}
+      </AnimatePresence>
     </>
   )
 }
