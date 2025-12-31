@@ -1,7 +1,6 @@
 import {motion} from 'framer-motion';
 
 function PageWrapper({children }){
-  const height = document.documentElement.scrollHeight
 
   return(
     <>

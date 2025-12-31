@@ -1,74 +1,41 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useInView, useScroll } from 'framer-motion';
 
 import BasicPage from "../../components/BasicPage";
 
 
 function HomeView() {
-  // 1. State to track when the element has been crossed
-  const [hasCrossedElement, setHasCrossedElement] = useState(false);
-
-  // 2. Ref to attach to the element you want to watch (the Image/Header)
   const targetRef = useRef(null);
+  const { scrollY } = useScroll();
+  const isInView = useInView(targetRef, {amount: 0.9});
+  const [hasPassed, setHasPassed] = useState(false);
 
   useEffect(() => {
-    // Ensure the target element is available
-    if (!targetRef.current) return;
-
-    // Define the options for the observer
-    const options = {
-      root: null, 
-      threshold: 0.0,
-      rootMargin: "0px 0px 0px 0px" 
-    };
-
-    // The callback function that runs when the target intersects the root
-    const callback = (entries) => {
-      // 'entries' is an array of observed elements. We only have one (targetRef.current).
-      entries.forEach(entry => {
-        // entry.isIntersecting is true when the element is visible in the root
-        // If entry.isIntersecting is FALSE, it means the element has scrolled completely out of view (past the top).
-        if (!entry.isIntersecting) {
-          // The element is completely off the screen
-          setHasCrossedElement(true);
-          console.log("🚀 Element crossed the top boundary! Fixed state activated.");
-        } else {
-          // The element is back on the screen
-          setHasCrossedElement(false);
-          console.log("🔽 Element is visible again. Fixed state deactivated.");
-        }
-      });
-    };
-
-    // Create the Intersection Observer instance
-    const observer = new IntersectionObserver(callback, options);
-
-    // Start observing the target element
-    observer.observe(targetRef.current);
-
-    // Cleanup function: stop observing when the component unmounts
-    return () => {
-      if (targetRef.current) {
-        observer.unobserve(targetRef.current);
-      }
-    };
-  }, []);
-
+    // If it was in view, but now it's not, and we are further down the page...
+    if (!isInView && scrollY.get() > targetRef.current?.offsetTop) {
+      setHasPassed(true);
+    } else {
+      setHasPassed(false);
+    }
+  }, [isInView, scrollY]);
 
   return (
-    <>
-    <div 
+    <main>
+    <motion.div 
+      animate={{ 
+        opacity: hasPassed ? 1 : 0,
+      }}
+      transition={{ duration: 0.3, ease: "anticipate"}}
       className={`
-        fixed bottom-0 text-6xl text-[#C6A982] z-1
-        transition-all duration-2000
-        ${hasCrossedElement?"":"text-transparent"}
+        fixed bottom-0 text-left text-8xl font-playfairDisplay font-bold
       `}
     >
       Ambiex
-    </div>
+    </motion.div>
     <div className="bg-[#FCECD2]">
       <BasicPage className="flex flex-col">
-        <div ref={targetRef} className="
+        <div className="
           bg-[url(/img/livingRoom.png)] bg-no-repeat bg-center
           w-full 
           h-[50svh]
@@ -83,30 +50,35 @@ function HomeView() {
           md:bg-bottom
         ">
         </div>
-        <div
+        <div ref={targetRef}
           className={`
-            flex flex-col justify-top items-left
+            flex flex-col justify-top items-left relative
             bg-[#FCECD2]
             w-full h-[50svh]
+
+            md:flex-row
+            md:items-center
           `}
         >
-          <div 
-            className={`
-              px-5 py-5 text-left text-6xl text-[#C6A982] font-playfairDisplay
-            `}
-          >
-            Ambiex
+          <div className="py-3
+            md:flex-1
+          ">
+            <span className='pl-5 text-left text-6xl font-playfairDisplay text-[#C6A982] border-b-2 border-black
+              md:pl-[33%]
+            '>Ambiex</span>
           </div>
-          <hr className="w-[80vw] h-10"></hr>
-          <div className="px-5">
+          <div className="px-5 py-5
+            md:flex-1
+          ">
             <span className="text-left text-xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut porro, rerum repudiandae reiciendis quam harum. Ducimus, fugiat distinctio nam omnis quod itaque perspiciatis, mollitia at culpa, aliquam earum accusantium minima.</span>
           </div>
         </div>
       </BasicPage>
 
       <BasicPage className="projects-container flex flex-col px-5">
-        <div className="project-1 grid justify-center items-center mb-18">
-          <img src="/img/office.png" className="w-[100vw] h-60 object-cover"/>
+        <Projects/>
+        {/* <div className="project-1 grid justify-center items-center mb-18">
+          <img src="/img/office.png" className="w-[100vw] h-60 object-cover md:"/>
           <div className="flex flex-row w-full">
             <span className="flex-1 text-sm">Project Red<br/>2025</span>
             <span className="flex-1 text-sm text-left">Process<br/>Materials</span>
@@ -135,7 +107,7 @@ function HomeView() {
         </div>
         <div className='flex justify-center items-center mt-7 mb-25'>
           <Link to='/works'className='font-playfairDisplay text-3xl underline'>See all works</Link>
-        </div>
+        </div> */}
       </BasicPage>
 
       <BasicPage className="bg-[#D8C8A5]">
@@ -196,8 +168,47 @@ function HomeView() {
         </div>
       </BasicPage>
     </div>
-    </>
+    </main>
   )
+}
+
+function Projects(){
+  const projects = [
+    { id: 1, name: "Project Red", year: "2025", img: "/img/office.png" },
+    { id: 2, name: "Project Blue", year: "2025", img: "/img/office2.png" },
+    { id: 3, name: "Project Green", year: "2025", img: "/img/livingRoom2.png" },
+    { id: 4, name: "Project White", year: "2025", img: "/img/livingRoom.png" },
+  ];
+  return (
+    <div className="grid grid-cols-1 gap-x-8 gap-y-18 px-4">
+      {projects.map((project) => (
+        <div key={project.id} className="flex flex-col group md:flex-row md:flex-1">
+          {/* Image Container */}
+          <div className="overflow-hidden mb-4 md:mb-0 md:w-200">
+            <img 
+              src={project.img} 
+              alt={project.name}
+              className="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-105 md:h-120"
+            />
+          </div>
+
+          {/* Details Row */}
+          <div className="flex justify-between w-full md:flex-col md:justify-center md:ml-5">
+            <div className="text-sm md:flex-1">
+              <span className="font-medium">{project.name}</span>
+              <br />
+              <span className="text-gray-500">{project.year}</span>
+            </div>
+            <div className="text-sm text-right md:text-left md:flex-1">
+              <span>Process</span>
+              <br />
+              <span className="text-gray-500">Materials</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default HomeView;
