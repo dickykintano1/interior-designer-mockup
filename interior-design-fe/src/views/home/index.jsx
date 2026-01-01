@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useInView, useScroll } from 'framer-motion';
 
 import BasicPage from "../../components/BasicPage";
+import ProjectList from '../../components/ProjectList';
 
 
 function HomeView() {
@@ -26,7 +27,7 @@ function HomeView() {
       animate={{ 
         opacity: hasPassed ? 1 : 0,
       }}
-      transition={{ duration: 0.3, ease: "anticipate"}}
+      transition={{ duration: 1, ease: "anticipate"}}
       className={`
         fixed bottom-0 text-left text-8xl font-playfairDisplay font-bold
       `}
@@ -34,7 +35,7 @@ function HomeView() {
       Ambiex
     </motion.div>
     <div className="bg-[#FCECD2]">
-      <BasicPage className="flex flex-col">
+      <section className="flex flex-col text-black">
         <div className="
           bg-[url(/img/livingRoom.png)] bg-no-repeat bg-center
           w-full 
@@ -73,54 +74,30 @@ function HomeView() {
             <span className="text-left text-xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut porro, rerum repudiandae reiciendis quam harum. Ducimus, fugiat distinctio nam omnis quod itaque perspiciatis, mollitia at culpa, aliquam earum accusantium minima.</span>
           </div>
         </div>
-      </BasicPage>
+      </section>
 
       <BasicPage className="projects-container flex flex-col px-5">
-        <Projects/>
-        {/* <div className="project-1 grid justify-center items-center mb-18">
-          <img src="/img/office.png" className="w-[100vw] h-60 object-cover md:"/>
-          <div className="flex flex-row w-full">
-            <span className="flex-1 text-sm">Project Red<br/>2025</span>
-            <span className="flex-1 text-sm text-left">Process<br/>Materials</span>
-          </div>
-        </div>
-        <div className="project-1 grid justify-center items-center mb-18">
-          <img src="/img/office2.png" className="w-[100vw] h-60 object-cover"/>
-          <div className="flex flex-row w-full">
-            <span className="flex-1 text-sm">Project Blue<br/>2025</span>
-            <span className="flex-1 text-sm text-left">Process<br/>Materials</span>
-          </div>
-        </div>
-        <div className="project-1 grid justify-center items-center mb-18">
-          <img src="/img/livingRoom2.png" className="w-[100vw] h-60 object-cover"/>
-          <div className="flex flex-row w-full">
-            <span className="flex-1 text-sm">Project Green<br/>2025</span>
-            <span className="flex-1 text-sm text-left">Process<br/>Materials</span>
-          </div>
-        </div>
-        <div className="project-1 grid justify-center items-center mb-18">
-          <img src="/img/livingRoom.png" className="w-[100vw] h-60 object-cover"/>
-          <div className="flex flex-row w-full">
-            <span className="flex-1 text-sm">Project White<br/>2025</span>
-            <span className="flex-1 text-sm text-left">Process<br/>Materials</span>
-          </div>
-        </div>
-        <div className='flex justify-center items-center mt-7 mb-25'>
+        <ProjectList/>
+        <div className='flex justify-center items-center my-25 md:my-40'>
           <Link to='/works'className='font-playfairDisplay text-3xl underline'>See all works</Link>
-        </div> */}
+        </div>
       </BasicPage>
 
-      <BasicPage className="bg-[#D8C8A5]">
-        <div className="flex flex-row h-[80px] items-center justify-center">
-          <hr className="flex-1 border-0 h-1 w-full bg-[#C6A982]"></hr>
-          <span className="flex-2 text-3xl text-center font-playfairDisplay">About</span>
-          <hr className="flex-1 border-0 h-1 w-full bg-[#C6A982]"></hr>
-        </div>
-        <div className="w-[100vw] px-10 flex">
-          <span className="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptates, soluta repudiandae earum eveniet aperiam sequi numquam vero, odio voluptas est unde. Nisi, consequuntur vitae deserunt doloremque non dolores eius.</span>
-        </div>
-        <div className="flex justify-center items-center">
-          <img src="/img/writing.png" className="py-10 max-w-60 h-100 object-cover"/>
+      <BasicPage className="flex justify-center">
+        <div className='bg-[#D8C8A5] flex flex-col'>
+          <div className="flex flex-row h-[80px] items-center justify-center md:mx-[10%]">
+            <hr className="flex-1 border-0 h-1  bg-[#C6A982]"></hr>
+            <span className="flex-1 text-3xl text-center font-playfairDisplay">About</span>
+            <hr className="flex-1 border-0 h-1 bg-[#C6A982]"></hr>
+          </div>
+          <div className='flex flex-col w-full justify-center items-center md:flex-row'>
+            <div className="px-[12.5%] flex-1 md:max-w-[50%]">
+              <span className="text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptates, soluta repudiandae earum eveniet aperiam sequi numquam vero, odio voluptas est unde. Nisi, consequuntur vitae deserunt doloremque non dolores eius.</span>
+            </div>
+            <div className="flex justify-center items-center flex-1 md:self-end md:px-[12.5%] md:w-[50%]">
+              <img src="/img/writing.png" className="py-10 max-w-60 h-100 object-cover"/>
+            </div>
+          </div>
         </div>
       </BasicPage>
 
@@ -172,43 +149,43 @@ function HomeView() {
   )
 }
 
-function Projects(){
-  const projects = [
-    { id: 1, name: "Project Red", year: "2025", img: "/img/office.png" },
-    { id: 2, name: "Project Blue", year: "2025", img: "/img/office2.png" },
-    { id: 3, name: "Project Green", year: "2025", img: "/img/livingRoom2.png" },
-    { id: 4, name: "Project White", year: "2025", img: "/img/livingRoom.png" },
-  ];
-  return (
-    <div className="grid grid-cols-1 gap-x-8 gap-y-18 px-4">
-      {projects.map((project) => (
-        <div key={project.id} className="flex flex-col group md:flex-row md:flex-1">
-          {/* Image Container */}
-          <div className="overflow-hidden mb-4 md:mb-0 md:w-200">
-            <img 
-              src={project.img} 
-              alt={project.name}
-              className="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-105 md:h-120"
-            />
-          </div>
+// function Projects(){
+//   const projects = [
+//     { id: 1, name: "Project Red", year: "2025", img: "/img/office.png" },
+//     { id: 2, name: "Project Blue", year: "2025", img: "/img/office2.png" },
+//     { id: 3, name: "Project Green", year: "2025", img: "/img/livingRoom2.png" },
+//     { id: 4, name: "Project White", year: "2025", img: "/img/livingRoom.png" },
+//   ];
+//   return (
+//     <div className="flex flex-col gap-x-8 gap-y-18 px-4 md:gap-y-30">
+//       {projects.map((project) => (
+//         <Link to={`/works/${project.id}`} key={project.id} className="flex flex-col md:mx-40 group md:flex-row">
+//           {/* Image Container */}
+//           <div className="overflow-hidden mb-4 md:mb-0 md:flex-3">
+//             <img 
+//               src={project.img} 
+//               alt={project.name}
+//               className="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-102 md:h-[40svh]"
+//             />
+//           </div>
 
-          {/* Details Row */}
-          <div className="flex justify-between w-full md:flex-col md:justify-center md:ml-5">
-            <div className="text-sm md:flex-1">
-              <span className="font-medium">{project.name}</span>
-              <br />
-              <span className="text-gray-500">{project.year}</span>
-            </div>
-            <div className="text-sm text-right md:text-left md:flex-1">
-              <span>Process</span>
-              <br />
-              <span className="text-gray-500">Materials</span>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
+//           {/* Details Row */}
+//           <div className="flex justify-between w-full md:flex-col md:justify-center md:ml-5 md:flex-2">
+//             <div className="text-sm md:flex-1">
+//               <span className="font-medium">{project.name}</span>
+//               <br />
+//               <span className="text-gray-500">{project.year}</span>
+//             </div>
+//             <div className="text-sm text-right md:text-left md:flex-1">
+//               <span>Process</span>
+//               <br />
+//               <span className="text-gray-500">Materials</span>
+//             </div>
+//           </div>
+//         </Link>
+//       ))}
+//     </div>
+//   );
+// }
 
 export default HomeView;

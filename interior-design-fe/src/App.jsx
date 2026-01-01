@@ -36,7 +36,7 @@ function App() {
     <LenisProvider>
       <NavBar color='#D8C8A5'/>
       <AnimatePresence mode="wait">
-        <ScrollToTop/>
+        {/* <ScrollToTop/> */}
         <Routes location={location} key={location.pathname}>
           <Route element={<MainLayout/>}>
             <Route path="/"           element={<PageWrapper><HomePage /></PageWrapper>}/>
