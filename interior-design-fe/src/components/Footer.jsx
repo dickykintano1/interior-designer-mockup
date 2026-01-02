@@ -35,9 +35,14 @@ export default function Footer(){
               <p className="text-xl font-semibold font-playfairDisplay mb-4 tracking-wide">
               GET IN TOUCH
               </p>
-              <p className="text-base ">
-                logo logo
-              </p>
+              <div className="flex h-full justify-end items-bottom gap-4">
+                <a href="https://instagram.com" aria-label="Instagram">
+                  <img src="/img/Instagram_Glyph_White.png" className='w-8 h-8'></img>
+                </a>
+                <a href="https://facebook.com" aria-label="Facebook">
+                  <img src="/img/Facebook_Logo_Secondary.png" className='w-8 h-8'></img>
+                </a>
+              </div>
             </div>
 
             <div className="flex flex-row w-full justify-between gap-6 text-base text-gray-600">

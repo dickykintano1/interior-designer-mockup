@@ -1,12 +1,12 @@
 import { createContext, useContext, useRef, useEffect } from "react";
 import Lenis from "lenis";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 const LenisContext = createContext(null);
 
 export function LenisProvider({ children }) {
   const lenisRef = useRef(null);
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
 
   const isDesktop = () => !('ontouchstart' in window || navigator.maxTouchPoints > 0);
 
@@ -34,12 +34,6 @@ export function LenisProvider({ children }) {
       lenisRef.current?.destroy();
     };
   }, []);
-
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      lenisRef.current?.scrollTo(0, { immediate: true });
-    });
-  }, [pathname]);
 
   return (
     <LenisContext.Provider value={lenisRef}>

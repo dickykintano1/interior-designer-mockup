@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useInView, useScroll } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
 import BasicPage from "../../components/BasicPage";
 import ProjectList from '../../components/ProjectList';
@@ -22,18 +22,18 @@ function HomeView() {
   }, [isInView, scrollY]);
 
   return (
-    <main>
+    <main className=''>
     <motion.div 
-      animate={{ 
-        opacity: hasPassed ? 1 : 0,
-      }}
+      initial={{ opacity: 0 }}
+      animate={{opacity: hasPassed ? 1 : 0}}
       transition={{ duration: 1, ease: "anticipate"}}
       className={`
-        fixed bottom-0 text-left text-8xl font-playfairDisplay font-bold
+        sticky top-[calc(100vh-6rem)] text-left text-8xl font-playfairDisplay font-bold z-1 h-0
       `}
     >
-      Ambiex
+    Ambiex
     </motion.div>
+    
     <div className="bg-[#FCECD2]">
       <section className="flex flex-col text-black">
         <div className="
@@ -56,6 +56,8 @@ function HomeView() {
             flex flex-col justify-top items-left relative
             bg-[#FCECD2]
             w-full h-[50svh]
+            z-0
+            
 
             md:flex-row
             md:items-center
@@ -83,7 +85,7 @@ function HomeView() {
         </div>
       </BasicPage>
 
-      <BasicPage className="flex justify-center">
+      <BasicPage className="flex justify-center z-2">
         <div className='bg-[#D8C8A5] flex flex-col'>
           <div className="flex flex-row h-[80px] items-center justify-center md:mx-[10%]">
             <hr className="flex-1 border-0 h-1  bg-[#C6A982]"></hr>
@@ -101,7 +103,7 @@ function HomeView() {
         </div>
       </BasicPage>
 
-      <BasicPage>
+      <BasicPage className="z-2">
         <div className="flex flex-row h-[80px] items-center justify-center">
           <hr className="flex-1 border-0 h-1 w-full bg-[#D8C8A5]"></hr>
           <span className="flex-2 text-3xl text-center font-playfairDisplay">Services</span>
@@ -129,7 +131,7 @@ function HomeView() {
         </div>
       </BasicPage>
 
-      <BasicPage className="flex justify-center items-center py-20">
+      <BasicPage className="flex justify-center items-center py-20 z-2">
         <div className="flex flex-col w-70 h-100 bg-[#D8C8A5] justify-top items-center">
           <span className="h-15 w-full text-left text-3xl p-3 font-playfairDisplay">Contact</span>
           <div className="flex justify-center items-center w-full p-3"><img src='img/typing.png' className="max-w-40 h-50 object-cover"></img></div>
@@ -149,43 +151,5 @@ function HomeView() {
   )
 }
 
-// function Projects(){
-//   const projects = [
-//     { id: 1, name: "Project Red", year: "2025", img: "/img/office.png" },
-//     { id: 2, name: "Project Blue", year: "2025", img: "/img/office2.png" },
-//     { id: 3, name: "Project Green", year: "2025", img: "/img/livingRoom2.png" },
-//     { id: 4, name: "Project White", year: "2025", img: "/img/livingRoom.png" },
-//   ];
-//   return (
-//     <div className="flex flex-col gap-x-8 gap-y-18 px-4 md:gap-y-30">
-//       {projects.map((project) => (
-//         <Link to={`/works/${project.id}`} key={project.id} className="flex flex-col md:mx-40 group md:flex-row">
-//           {/* Image Container */}
-//           <div className="overflow-hidden mb-4 md:mb-0 md:flex-3">
-//             <img 
-//               src={project.img} 
-//               alt={project.name}
-//               className="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-102 md:h-[40svh]"
-//             />
-//           </div>
-
-//           {/* Details Row */}
-//           <div className="flex justify-between w-full md:flex-col md:justify-center md:ml-5 md:flex-2">
-//             <div className="text-sm md:flex-1">
-//               <span className="font-medium">{project.name}</span>
-//               <br />
-//               <span className="text-gray-500">{project.year}</span>
-//             </div>
-//             <div className="text-sm text-right md:text-left md:flex-1">
-//               <span>Process</span>
-//               <br />
-//               <span className="text-gray-500">Materials</span>
-//             </div>
-//           </div>
-//         </Link>
-//       ))}
-//     </div>
-//   );
-// }
 
 export default HomeView;

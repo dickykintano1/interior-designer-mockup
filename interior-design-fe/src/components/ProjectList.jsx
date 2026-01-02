@@ -8,7 +8,7 @@ export default function ProjectList(){
     { id: 4, name: "Project White", year: "2025", img: "/img/livingRoom.png" },
   ];
   return (
-    <div className="flex flex-col gap-x-8 gap-y-18 md:gap-y-30">
+    <div className="flex flex-col gap-x-8 gap-y-18 md:gap-y-30 z-2">
       {projects.map((project) => (
         <Link to={`/works/${project.id}`} key={project.id} className="flex flex-col group md:flex-row">
           {/* Image Container */}
