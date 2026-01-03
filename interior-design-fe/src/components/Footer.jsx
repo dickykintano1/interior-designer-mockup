@@ -1,6 +1,25 @@
 import { Link } from "react-router-dom"
 
 export default function Footer(){
+  const links = [
+    {
+      to: "/",
+      name: "Home",
+    },
+    {
+      to: "/about",
+      name: "About Us",
+    },
+    {
+      to: "/works",
+      name: "Our Work",
+    },
+    {
+      to: "/philosophy",
+      name: "Philosophy",
+    },
+  ]
+
   return(
     <div id="footer"
       className="relative w-[100vw] !text-[#1C1C1C] z-2"
@@ -11,13 +30,10 @@ export default function Footer(){
 
         <div className="w-full flex flex-col justify-center items-center py-4">
           <div className="grid grid-cols-2 gap-8 w-[90vw] mx-auto">
-            <div>
-              <ul className="space-y-1 text-lg font-light font-montserrat">
-                <li><Link to="/" className="hover:underline">Home</Link></li>
-                <li><Link to="/about" className="hover:underline">About Us</Link></li>
-                <li><Link to="/works" className="hover:underline">Our Work</Link></li>
-                <li><Link to="/philosophy" className="hover:underline">Philosophy</Link></li>
-              </ul>
+            <div className="flex flex-col gap-y-1 text-lg font-light font-montserrat md:flex-row md:gap-x-10">
+              {links.map((title)=>(
+                <Link key={title.name} to={title.to} className="hover:underline">{title.name}</Link>
+              ))}
             </div>
             <div>
               <ul className="space-y-1 text-lg font-light text-right font-montserrat">

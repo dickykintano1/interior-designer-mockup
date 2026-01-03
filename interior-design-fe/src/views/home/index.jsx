@@ -22,19 +22,19 @@ function HomeView() {
   }, [isInView, scrollY]);
 
   return (
-    <main className=''>
+    <main className='relative'>
     <motion.div 
       initial={{ opacity: 0 }}
       animate={{opacity: hasPassed ? 1 : 0}}
       transition={{ duration: 1, ease: "anticipate"}}
       className={`
-        sticky top-[calc(100vh-6rem)] text-left text-8xl font-playfairDisplay font-bold z-1 h-0
+        sticky top-[calc(100vh-6rem)] text-8xl font-playfairDisplay font-bold z-1
       `}
     >
     Ambiex
     </motion.div>
     
-    <div className="bg-[#FCECD2]">
+    <div className="bg-[#FCECD2] -mt-[1rem]">
       <section className="flex flex-col text-black">
         <div className="
           bg-[url(/img/livingRoom.png)] bg-no-repeat bg-center
@@ -87,10 +87,10 @@ function HomeView() {
 
       <BasicPage className="flex justify-center z-2">
         <div className='bg-[#D8C8A5] flex flex-col'>
-          <div className="flex flex-row h-[80px] items-center justify-center md:mx-[10%]">
-            <hr className="flex-1 border-0 h-1  bg-[#C6A982]"></hr>
+          <div className="flex flex-row h-[80px] items-center justify-center">
+            <hr className="flex-2 border-0 h-1  bg-[#C6A982]"></hr>
             <span className="flex-1 text-3xl text-center font-playfairDisplay">About</span>
-            <hr className="flex-1 border-0 h-1 bg-[#C6A982]"></hr>
+            <hr className="flex-2 border-0 h-1 bg-[#C6A982]"></hr>
           </div>
           <div className='flex flex-col w-full justify-center items-center md:flex-row'>
             <div className="px-[12.5%] flex-1 md:max-w-[50%]">
@@ -103,35 +103,11 @@ function HomeView() {
         </div>
       </BasicPage>
 
-      <BasicPage className="z-2">
-        <div className="flex flex-row h-[80px] items-center justify-center">
-          <hr className="flex-1 border-0 h-1 w-full bg-[#D8C8A5]"></hr>
-          <span className="flex-2 text-3xl text-center font-playfairDisplay">Services</span>
-          <hr className="flex-1 border-0 h-1 w-full bg-[#D8C8A5]"></hr>
-        </div>
-        <div className="grid grid-cols-3 grid-rows-20 h-[100svh] mx-5">
-          <div className="row-span-1">Layout Design</div>
-          <div className="row-span-1 col-span-2 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-          <div className="row-span-5"></div>
-          <div className="row-span-5 col-span-2 bg-[url(/img/Layout.png)] bg-[80%_auto] bg-center bg-no-repeat"></div>
-
-          <hr className="col-span-3 h-1 w-[100vw] border-none -mx-5" style={{ backgroundColor: '#D8C8A5' }}></hr>
-
-          <div className="row-span-1">Material Selection</div>
-          <div className="row-span-1 col-span-2 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-          <div className="row-span-5"></div>
-          <div className="row-span-5 col-span-2 bg-[url(/img/Materials.png)] bg-[80%_auto] bg-center bg-no-repeat"></div>
-
-          <hr className="col-span-3 h-1 w-[100vw] border-none -mx-5" style={{ backgroundColor: '#D8C8A5' }}></hr>
-
-          <div className="row-span-1">Management & Coordination</div>
-          <div className="row-span-1 col-span-2 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-          <div className="row-span-5"></div>
-          <div className="row-span-5 col-span-2 bg-[url(/img/Management.png)] bg-[80%_auto] bg-center bg-no-repeat"></div>
-        </div>
+      <BasicPage className="mt-25 z-2">
+        <Services/>
       </BasicPage>
 
-      <BasicPage className="flex justify-center items-center py-20 z-2">
+      <BasicPage className="flex justify-center items-center py-25 z-2">
         <div className="flex flex-col w-70 h-100 bg-[#D8C8A5] justify-top items-center">
           <span className="h-15 w-full text-left text-3xl p-3 font-playfairDisplay">Contact</span>
           <div className="flex justify-center items-center w-full p-3"><img src='img/typing.png' className="max-w-40 h-50 object-cover"></img></div>
@@ -148,6 +124,49 @@ function HomeView() {
       </BasicPage>
     </div>
     </main>
+  )
+}
+
+function Services(){
+  const services = [
+  {
+    title: "Layout Design",
+    desc: "Thoughtful spatial planning that balances aesthetics, flow, and functionality.",
+    icon: "/img/icons/design.png",
+  },
+  {
+    title: "Material Selection",
+    desc: "Carefully curated materials that align with the project’s concept and budget.",
+    icon: "/img/icons/materials.png",
+  },
+  {
+    title: "Project Management",
+    desc: "End-to-end coordination to ensure timelines, quality, and execution are aligned.",
+    icon: "/img/icons/management.png",
+  },
+];
+
+  return(
+  <>
+    <div className="flex flex-row h-[80px] items-center justify-center">
+      <hr className="flex-2 border-0 h-1 w-full bg-[#D8C8A5]"></hr>
+      <span className="flex-1 text-3xl text-center font-playfairDisplay">Services</span>
+      <hr className="flex-2 border-0 h-1 w-full bg-[#D8C8A5]"></hr>
+    </div>
+    <section className="grid grid-cols-1 divide-y-4 divide-[#D8C8A5] mx-5">
+      {services.map((e)=>(
+        <div key={e.title} className="flex flex-col gap-4 py-8 md:flex-row md:py-20 md:justify-center">
+          <div className="shrink-0">
+            <img src={e.icon} className="w-20 h-20 md:w-30 md:h-30" />
+          </div>
+          <div className='md:max-w-[30%]'>
+            <p className="text-2xl font-semibold mb-4">{e.title}</p>
+            <p className="text-base opacity-70">{e.desc}</p>
+          </div>
+        </div>
+      ))}
+    </section>
+  </>
   )
 }
 

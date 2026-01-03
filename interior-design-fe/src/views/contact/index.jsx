@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import BasicPage from '../../components/BasicPage';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -23,34 +24,35 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="!text-black">
-      <div className='bg-[#F9EED2] flex flex-col min-h-[100dvh]'>
-        <div className="px-6 py-12">
-          <span className="text-4xl -mx-6 pl-6 my-30 border-b border-black inline-block">Contact</span>
-    
+    <div className="!text-black bg-[#F9EED2] pb-25">
+      <div className='min-h-screen flex flex-col md:min-h-0'>
+        <span className="w-fit text-4xl pl-6 mt-45 mb-15 border-b border-black md:pl-[12.5%]">Contact</span>
+
+        <BasicPage className='flex-1 flex flex-col px-5'>
           <div className="space-y-6 mb-15">
             <p>Thank you for considering us.<br />First meeting is also available online.</p>
             <p>Feel free to contact us.</p>
           </div>
 
-          <div className="space-y-4 mb-20">
+          <div className="space-y-4 mb-20 flex-1 md:flex-0">
             <h2 className="text-2xl font-playfairDisplay">Telephone</h2>
             <p>For inquiries feel free to fill the form, or you can contact us by:</p>
             <p className="text-3xl md:text-4xl font-light">(555) 123-4567</p>
             <p>Reception hours: Weekdays 9:00 - 17:30</p>
           </div>
-        </div>
-        <div className='flex-1'></div>
 
-        {/* Tabs / Buttons */}
-        <div className="px-4 pb-8 flex gap-4 items-center justify-center">
-          <button className="flex-1 py-3 bg-[#EAEFF5] rounded-full text-sm">Consultation</button>
-          <button className="flex-1 py-3 bg-[#EAEFF5] rounded-full text-sm">Application</button>
-        </div>
+
+          {/* Tabs / Buttons */}
+          <div className="pb-5 flex gap-4 items-center justify-center">
+            <button className="flex-1 py-3 bg-[#EAEFF5] rounded-full text-sm">Consultation</button>
+            <button className="flex-1 py-3 bg-[#EAEFF5] rounded-full text-sm">Application</button>
+          </div>
+        </BasicPage>
       </div>
+      
 
       {/* Form Section */}
-      <main className="bg-[#F0F0F0] px-6 py-10">
+      <main className="bg-[#F0F0F0] px-6 py-10 md:mx-[12.5%]">
         <form className="max-w-xl mx-auto space-y-8">
           
           {/* Checkboxes */}
