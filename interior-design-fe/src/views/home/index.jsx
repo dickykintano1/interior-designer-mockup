@@ -78,7 +78,7 @@ function HomeView() {
         </div>
       </section>
 
-      <BasicPage className="projects-container flex flex-col px-5">
+      <BasicPage className="projects-container flex flex-col">
         <ProjectList/>
         <div className='flex justify-center items-center my-25 md:my-40'>
           <Link to='/works'className='font-playfairDisplay text-3xl underline'>See all works</Link>
@@ -88,9 +88,9 @@ function HomeView() {
       <BasicPage className="flex justify-center z-2">
         <div className='bg-[#D8C8A5] flex flex-col'>
           <div className="flex flex-row h-[80px] items-center justify-center">
-            <hr className="flex-2 border-0 h-1  bg-[#C6A982]"></hr>
-            <span className="flex-1 text-3xl text-center font-playfairDisplay">About</span>
-            <hr className="flex-2 border-0 h-1 bg-[#C6A982]"></hr>
+            <hr className="flex-1 border-0 h-1  bg-[#C6A982] md:flex-2"></hr>
+            <span className="flex-2 text-3xl text-center font-playfairDisplay md:flex-1">About</span>
+            <hr className="flex-1 border-0 h-1 bg-[#C6A982] md:flex-2"></hr>
           </div>
           <div className='flex flex-col w-full justify-center items-center md:flex-row'>
             <div className="px-[12.5%] flex-1 md:max-w-[50%]">
@@ -149,11 +149,11 @@ function Services(){
   return(
   <>
     <div className="flex flex-row h-[80px] items-center justify-center">
-      <hr className="flex-2 border-0 h-1 w-full bg-[#D8C8A5]"></hr>
-      <span className="flex-1 text-3xl text-center font-playfairDisplay">Services</span>
-      <hr className="flex-2 border-0 h-1 w-full bg-[#D8C8A5]"></hr>
+      <hr className="flex-1 border-0 h-1 w-full bg-[#D8C8A5] md:flex-2"></hr>
+      <span className="flex-2 text-3xl text-center font-playfairDisplay md:flex-1">Services</span>
+      <hr className="flex-1 border-0 h-1 w-full bg-[#D8C8A5] md:flex-2"></hr>
     </div>
-    <section className="grid grid-cols-1 divide-y-4 divide-[#D8C8A5] mx-5">
+    <section className="grid grid-cols-1 divide-y-4 divide-[#D8C8A5]">
       {services.map((e)=>(
         <div key={e.title} className="flex flex-col gap-4 py-8 md:flex-row md:py-20 md:justify-center">
           <div className="shrink-0">

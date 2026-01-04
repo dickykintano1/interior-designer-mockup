@@ -1,11 +1,13 @@
+import BasicPage from "../../components/BasicPage"
+
 export default function PrivacyPolicyView(){
   return(
-    <main>
-      <div className='bg-[#F9EED2] !text-black px-6 py-12'>
-        {/* <span className="text-4xl mt-30 inline-block">Philosophy</span> */}
-        <span className="text-4xl -mx-6 pl-6 mt-30 inline-block w-full">Privacy Policy</span>
-        <span className="text-2xl -mx-6 pl-6 mb-30 border-b border-black inline-block">Last Updated: December 2025</span>
+    <main className="!text-black bg-[#F9EED2] md:pb-25">
+      <div className='min-h-screen flex flex-col md:min-h-[80svh]'>
+        <span className="text-4xl pl-6 mt-45 inline-block w-full md:pl-[12.5%]">Privacy Policy</span>
+        <span className="w-fit text-2xl pl-6 mb-15 border-b border-black inline-block md:pl-[12.5%]">Last Updated: December 2025</span>
 
+        <BasicPage>
         <div className="mb-6 text-3xl font-playfairDisplay">
           <p>01. Fictional Project Disclaimer</p>
         </div>
@@ -40,6 +42,7 @@ export default function PrivacyPolicyView(){
         <div className="mb-30 pr-[25dvw]">
           <p>If you have questions regarding the technical construction of this portfolio or the creative process behind it, please reach out via the contact information provided in the footer.</p>
         </div>
+        </BasicPage>
 
       </div>
     </main>

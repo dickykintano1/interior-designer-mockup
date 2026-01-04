@@ -3,11 +3,13 @@ import ProjectList from "../../components/ProjectList"
 
 export default function WorksView(){
   return(
-    <div className="py-12 bg-[#FCECD2] text-black">
-      <span className="text-4xl pl-6 mt-30 mb-30 border-b border-black inline-block">Our Works</span>
-      <BasicPage className="projects-container flex flex-col px-6 pb-12">
-        <ProjectList/>
-      </BasicPage>
-    </div>
+    <main className="!text-black bg-[#F9EED2] pb-12 md:pb-25">
+      <div className='min-h-screen flex flex-col md:min-h-[80svh]'>
+        <span className="w-fit text-4xl pl-6 mt-45 mb-15 border-b border-black md:pl-[12.5%]">Our Works</span>
+        <BasicPage className="projects-container flex flex-col px-6">
+          <ProjectList/>
+        </BasicPage>
+      </div>
+    </main>
   )
 }

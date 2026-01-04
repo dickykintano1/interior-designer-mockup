@@ -87,8 +87,16 @@ const NavBar = ({ color }) => {
               <Link to="/contact"     className="mt-4 text-xl hover:underline">Contact</Link>
             </div>
 
-            <div className="mx-6 pb-6 h-full flex items-end">
-              <div className="flex">Logo Logo Privacy</div>
+            <div className="mx-4 pb-3 h-full flex flex-col justify-end items-end gap-4">
+              <div className="flex gap-4">
+                <a href="https://instagram.com" aria-label="Instagram">
+                  <img src="/img/Instagram_Glyph_White.png" className='w-8 h-8'></img>
+                </a>
+                <a href="https://facebook.com" aria-label="Facebook">
+                  <img src="/img/Facebook_Logo_Secondary.png" className='w-8 h-8'></img>
+                </a>
+              </div>
+              <Link to="/privacy-policy" className="hover:underline">Privacy Policy</Link>
             </div>
           </motion.div>
         </>

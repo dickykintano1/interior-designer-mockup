@@ -24,17 +24,17 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="!text-black bg-[#F9EED2] pb-25">
-      <div className='min-h-screen flex flex-col md:min-h-0'>
+    <div className="!text-black bg-[#F9EED2] md:pb-25">
+      <div className='min-h-screen flex flex-col md:min-h-[80svh]'>
         <span className="w-fit text-4xl pl-6 mt-45 mb-15 border-b border-black md:pl-[12.5%]">Contact</span>
 
-        <BasicPage className='flex-1 flex flex-col px-5'>
+        <BasicPage className='flex-1 flex flex-col'>
           <div className="space-y-6 mb-15">
             <p>Thank you for considering us.<br />First meeting is also available online.</p>
             <p>Feel free to contact us.</p>
           </div>
 
-          <div className="space-y-4 mb-20 flex-1 md:flex-0">
+          <div className="space-y-4 mb-20 flex-1">
             <h2 className="text-2xl font-playfairDisplay">Telephone</h2>
             <p>For inquiries feel free to fill the form, or you can contact us by:</p>
             <p className="text-3xl md:text-4xl font-light">(555) 123-4567</p>
