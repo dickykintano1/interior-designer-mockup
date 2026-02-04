@@ -104,7 +104,8 @@ function HomeView() {
       </BasicPage>
 
       <BasicPage className="mt-25 z-2">
-        <Services/>
+        {/* <Services/> */}
+        <ServicesSection/>
       </BasicPage>
 
       <BasicPage className="flex justify-center items-center py-25 z-2">
@@ -166,6 +167,76 @@ function Services(){
         </div>
       ))}
     </section>
+  </>
+  )
+}
+
+function ServiceCard({ title, desc, icon }) {
+  return (
+    <div className="w-full max-w-sm rounded-2xl shadow-lg overflow-hidden">
+      
+      {/* Header */}
+      <div className="flex items-center gap-3 px-5 py-4 bg-[#DCCFB0]">
+        <img
+          src={icon}
+          alt={title}
+          className="w-6 h-6 object-contain"
+        />
+        <h3 className="text-lg font-medium text-[#2A2A2A]">
+          {title}
+        </h3>
+      </div>
+
+      {/* Body */}
+      <div className="
+        px-5 py-6
+        bg-white/35
+        backdrop-blur-xs
+        border border-white/30
+        h-full
+      ">
+        <p className="text-sm leading-relaxed text-[#3A3A3A]">
+          {desc}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ServicesSection(){
+  const services = [
+  {
+    title: "Layout Design",
+    desc: "Thoughtful spatial planning that balances aesthetics, flow, and functionality.",
+    icon: "/img/icons/design.png",
+  },
+  {
+    title: "Material Selection",
+    desc: "Carefully curated materials that align with the project’s concept and budget.",
+    icon: "/img/icons/materials.png",
+  },
+  {
+    title: "Project Management",
+    desc: "End-to-end coordination to ensure timelines, quality, and execution are aligned.",
+    icon: "/img/icons/management.png",
+  },
+];
+
+  return(
+  <>
+    <div className="flex flex-row h-[80px] mb-5 items-center justify-center">
+      <span className="flex-2 text-3xl text-center font-playfairDisplay md:flex-1">Services</span>
+    </div>
+    <div className="grid gap-10 lg:grid-cols-3 justify-items-center">
+      {services.map((item, index) => (
+        <ServiceCard
+          key={index}
+          title={item.title}
+          desc={item.desc}
+          icon={item.icon}
+        />
+      ))}
+    </div>
   </>
   )
 }

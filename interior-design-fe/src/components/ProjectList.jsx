@@ -12,7 +12,7 @@ export default function ProjectList(){
       {projects.map((project) => (
         <Link to={`/works/${project.id}`} key={project.id} className="flex flex-col group md:flex-row">
           {/* Image Container */}
-          <div className="overflow-hidden mb-4 md:mb-0 md:flex-3">
+          <div className="overflow-hidden md:mb-0 md:flex-3">
             <img 
               src={project.img} 
               alt={project.name}
@@ -21,7 +21,13 @@ export default function ProjectList(){
           </div>
 
           {/* Details Row */}
-          <div className="flex justify-between w-full md:flex-col md:justify-center md:ml-5 md:flex-2">
+          <div className="
+            flex justify-between md:flex-col md:justify-center md:flex-2
+            w-full py-4 px-2 md:pl-7 md:py-0
+            bg-white/35
+            backdrop-blur-xs
+            border border-white/30
+          ">
             <div className="text-sm md:flex-1">
               <span className="font-medium">{project.name}</span>
               <br />
