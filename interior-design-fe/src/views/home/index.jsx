@@ -28,13 +28,13 @@ function HomeView() {
         animate={{ opacity: hasPassed ? 1 : 0 }}
         transition={{ duration: 1, ease: "anticipate" }}
         className={`
-        sticky top-[calc(100vh-6rem)] text-8xl font-playfairDisplay font-bold z-1
+        sticky top-[calc(100vh-6rem)] lg:top-[calc(100vh-8rem)] text-8xl lg:text-9xl font-playfairDisplay font-bold z-1
       `}
       >
         Ambiex
       </motion.div>
 
-      <div className="bg-[#FCECD2] -mt-[1rem]">
+      <div className="bg-[#FCECD2] -mt-[60px]">
         <section className="flex flex-col text-black">
           <div className="
             bg-[url(/img/livingRoom.png)] bg-no-repeat bg-center
